@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Entre Gerações — Arte, memória e natal</title>
+<meta name="description" content="Projeto de extensão universitária que promove bem-estar e socialização para idosos por meio de oficinas de arte.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ramo" viewBox="0 0 140 90">
+      <path d="M5 80 C40 70 80 50 135 10" stroke="#1B5E44" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M30 70c-8-22 6-34 22-36 4 22-6 34-22 36zM62 55c-6-22 8-34 24-34 2 20-8 32-24 34zM92 38c-4-18 8-28 22-28 1 18-8 26-22 28z" fill="#7A9B7E"/>
+      <circle cx="46" cy="76" r="6" fill="#D81B3A"/><circle cx="58" cy="82" r="6" fill="#D81B3A"/><circle cx="52" cy="68" r="5" fill="#D81B3A"/>
+    </symbol>
+  </defs>
+</svg>
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#inicio" aria-label="Entre Gerações — início">
+      <span class="logo"><img src="logo.jpg" alt="" width="46" height="46"></span>Entre Gerações
+    </a>
+    <button class="toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+    <ul class="menu" id="menu">
+      <li><a href="#sobre">O projeto</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#painel">Painel Digital</a></li>
+      <li><a href="#diario">Diário de Bordo</a></li>
+      <li><a href="#pesquisa">Sua opinião</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="conteudo">
+<section class="hero" id="inicio">
+  <svg class="leaf a" aria-hidden="true"><use href="#ramo"/></svg>
+  <svg class="leaf b" aria-hidden="true"><use href="#ramo"/></svg>
+  <div class="wrap">
+    <div>
+      <h1>Arte, memória <em>e natal</em></h1>
+      <p class="lead">Oficinas de arte que aproximam gerações, despertam lembranças e fazem do encontro um presente.</p>
+      <p>O Entre Gerações é um projeto de extensão universitária que promove bem-estar e socialização para pessoas idosas, com acolhimento, escuta e criação coletiva.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#galeria">Ver a galeria</a>
+        <a class="btn btn-outline" href="#sobre">Conhecer o projeto</a>
+      </div>
+    </div>
+    <div class="logo"><img src="logo.jpg" alt="Logo do Entre Gerações: árvore da vida com raízes, folhas e conexões douradas, cercada por azevinho e um laço vermelho" width="420" height="420"></div>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="wrap">
+    <h2>Um encontro de gerações</h2>
+    <p>Nas oficinas, estudantes e pessoas idosas criam juntos. A arte abre espaço para contar histórias, fortalecer vínculos e celebrar o Natal com afeto.</p>
+    <div class="cards">
+      <article class="card">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 42S6 31 6 18a9 9 0 0 1 18-3 9 9 0 0 1 18 3c0 13-18 24-18 24z" fill="#D81B3A"/></svg>
+        <h3>Bem-estar</h3>
+        <p>Atividades acolhedoras, no ritmo de cada pessoa, que estimulam a criatividade, a autoestima e a alegria.</p>
+      </article>
+      <article class="card">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="16" cy="18" r="7" fill="#1B5E44"/><circle cx="33" cy="20" r="6" fill="#7A9B7E"/><path d="M4 40c1-9 6-12 12-12s11 3 12 12zM27 40c1-6 4-9 8-9s8 3 9 9z" fill="#0E3B2E"/></svg>
+        <h3>Socialização</h3>
+        <p>Um espaço para conversar, ouvir e criar junto, que aproxima pessoas de idades diferentes.</p>
+      </article>
+      <article class="card">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4l5 12 13 1-10 9 3 13-11-7-11 7 3-13L6 17l13-1z" fill="#D4AF37"/></svg>
+        <h3>Arte e memória</h3>
+        <p>Cada obra guarda uma lembrança. As criações dos participantes ganham destaque e viram história compartilhada.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="galeria">
+  <div class="wrap">
+    <div class="gal-head">
+      <div>
+        <h2>Galeria de imagens e vídeos</h2>
+        <p>Momentos das oficinas. Os itens carregam aos poucos para a página ficar leve.</p>
+      </div>
+      <a class="btn btn-outline" href="https://drive.google.com/drive/folders/1GmpkdHltm5TP1AHsVoAQbLFt2xohMpAQ" target="_blank" rel="noopener">Abrir pasta completa</a>
+    </div>
+    <div class="masonry" id="grid" aria-live="polite"></div>
+    <div class="more">
+      <button class="btn btn-primary" id="more" type="button">Carregar mais</button>
+      <small id="count"></small>
+    </div>
+  </div>
+</section>
+
+<section class="painel" id="painel">
+  <div class="wrap">
+    <span class="selo">Em breve</span>
+    <h2>Painel Digital</h2>
+    <p>Aqui ficarão os QR Codes e as fotos das obras criadas pelos idosos nas oficinas. Cada QR Code levará a quem aponta o celular a história por trás da obra.</p>
+    <div class="frames" aria-hidden="true">
+      <div class="frame"><div><svg viewBox="0 0 64 64"><g fill="none" stroke="#D4AF37" stroke-width="4"><rect x="8" y="8" width="20" height="20" rx="3"/><rect x="36" y="8" width="20" height="20" rx="3"/><rect x="8" y="36" width="20" height="20" rx="3"/></g><path d="M38 38h6v6h-6zM50 38h6v6h-6zM44 50h6v6h-6z" fill="#D4AF37"/></svg>QR Code da obra</div></div>
+      <div class="frame"><div><svg viewBox="0 0 64 64"><rect x="6" y="10" width="52" height="44" rx="6" fill="none" stroke="#D4AF37" stroke-width="4"/><circle cx="22" cy="26" r="5" fill="#F7C8D4"/><path d="M10 50l16-16 10 10 8-8 12 14z" fill="#7A9B7E"/></svg>Foto da obra</div></div>
+      <div class="frame"><div><svg viewBox="0 0 64 64"><g fill="none" stroke="#D4AF37" stroke-width="4"><rect x="8" y="8" width="20" height="20" rx="3"/><rect x="36" y="8" width="20" height="20" rx="3"/><rect x="8" y="36" width="20" height="20" rx="3"/></g><path d="M38 38h6v6h-6zM50 38h6v6h-6zM44 50h6v6h-6z" fill="#D4AF37"/></svg>QR Code da obra</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="diario" id="diario">
+  <div class="wrap">
+    <span class="selo">Em breve</span>
+    <h2>Diário de bordo</h2>
+    <p>Os relatos de cada oficina serão publicados aqui, na ordem em que aconteceram.</p>
+    <ol class="timeline">
+      <li><div class="box"><h3>Primeiro encontro</h3><p>Em breve: como foi a chegada, as apresentações e a primeira criação em grupo.</p></div></li>
+      <li><div class="box"><h3>Oficina de memórias</h3><p>Em breve: as histórias que as obras fizeram surgir.</p></div></li>
+      <li><div class="box"><h3>Oficina de Natal</h3><p>Em breve: enfeites, cores e tradições feitas à mão.</p></div></li>
+      <li><div class="box"><h3>Encerramento</h3><p>Em breve: a celebração final e o que levamos uns dos outros.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="pesquisa" id="pesquisa">
+  <div class="wrap">
+    <div>
+      <h2>Sua opinião importa</h2>
+      <p>Participou de uma oficina ou visitou o projeto? Conte como foi. Leva menos de um minuto e nos ajuda a cuidar melhor de cada encontro.</p>
+    </div>
+    <form id="form" novalidate>
+      <div class="field">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" autocomplete="name" required>
+      </div>
+      <fieldset>
+        <legend>Como você avalia a experiência?</legend>
+        <div class="stars" role="radiogroup">
+          <input type="radio" name="nota" id="s5" value="5"><label for="s5" title="5 estrelas" aria-label="5 estrelas">★</label>
+          <input type="radio" name="nota" id="s4" value="4"><label for="s4" title="4 estrelas" aria-label="4 estrelas">★</label>
+          <input type="radio" name="nota" id="s3" value="3"><label for="s3" title="3 estrelas" aria-label="3 estrelas">★</label>
+          <input type="radio" name="nota" id="s2" value="2"><label for="s2" title="2 estrelas" aria-label="2 estrelas">★</label>
+          <input type="radio" name="nota" id="s1" value="1"><label for="s1" title="1 estrela" aria-label="1 estrela">★</label>
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="msg">Comentários</label>
+        <textarea id="msg" name="msg" rows="5"></textarea>
+        <p class="hint">Conte o que mais gostou e o que podemos melhorar.</p>
+      </div>
+      <button class="btn btn-gold" type="submit">Enviar minha opinião</button>
+      <div class="ok" id="ok" role="status" tabindex="-1">Obrigado por compartilhar sua opinião!</div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="slogan">Arte, memória e natal</p>
+    <p>Entre Gerações · Projeto de extensão universitária</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
