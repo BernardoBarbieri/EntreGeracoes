@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -25,7 +25,7 @@
 <header>
   <div class="wrap nav">
     <a class="brand" href="#inicio" aria-label="Entre Gerações — início">
-      <span class="logo"><img src="images/logo.jpg" alt="" width="46" height="46"></span>Entre Gerações
+      <span class="logo"><img src="logo.jpg" alt="" width="46" height="46"></span>Entre Gerações
     </a>
     <button class="toggle" aria-expanded="false" aria-controls="menu">Menu</button>
     <ul class="menu" id="menu">
@@ -52,7 +52,7 @@
         <a class="btn btn-outline" href="#sobre">Conhecer o projeto</a>
       </div>
     </div>
-    <div class="logo"><img src="images/logo.jpg" alt="Logo do Entre Gerações: árvore da vida com raízes, folhas e conexões douradas, cercada por azevinho e um laço vermelho" width="420" height="420"></div>
+    <div class="logo"><img src="logo.jpg" alt="Logo do Entre Gerações: árvore da vida com raízes, folhas e conexões douradas, cercada por azevinho e um laço vermelho" width="420" height="420"></div>
   </div>
 </section>
 
@@ -98,26 +98,87 @@
 </section>
 
 <section class="painel" id="painel">
+  <div class="lights" aria-hidden="true"></div>
+  <span class="star s1" aria-hidden="true">✦</span><span class="star s2" aria-hidden="true">✦</span><span class="star s3" aria-hidden="true">✦</span><span class="star s4" aria-hidden="true">✦</span><span class="star s5" aria-hidden="true">✦</span>
+  <svg class="galho l" aria-hidden="true"><use href="#ramo"/></svg>
+  <svg class="galho r" aria-hidden="true"><use href="#ramo"/></svg>
   <div class="wrap">
-    <span class="selo">Em breve</span>
+    <span class="selo">Obras de Natal</span>
     <h2>Painel Digital</h2>
-    <p>Aqui ficarão os QR Codes e as fotos das obras criadas pelos idosos nas oficinas. Cada QR Code levará a quem aponta o celular a história por trás da obra.</p>
-    <div class="frames" aria-hidden="true">
-      <!-- Início do Cartão 3D -->
-      <div class="tilt-card" id="tilt-card-natal">
-        <!-- Coloque a imagem na pasta images/ do seu projeto -->
-        <img src="images/cartao-natal.jpg" alt="Cartão de Natal EntreGerações" class="tilt-bg">
-        
-        <!-- Elemento em Parallax (salta para fora) -->
-        <div class="tilt-content">
-          <div class="badge-natal">Boas Festas!</div>
+    <p>As criações feitas pelos participantes nas oficinas. Passe o mouse sobre cada obra, ou toque e arraste no celular, para vê-la ganhar profundidade.</p>
+    <div class="obras">
+      <figure class="obra" style="--rot:-1.6deg">
+        <div class="tilt">
+          <div class="face"><img src="painel/obra-01.jpg" alt="Árvore de Natal com estrela dourada, bolas coloridas e dois corações, em moldura vermelha" width="640" height="948" loading="lazy"><span class="glare"></span></div>
+          <span class="pin" aria-hidden="true"></span>
         </div>
-        
-        <!-- Efeito de Luz (Spotlight) -->
-        <div class="tilt-spotlight"></div>
-      </div>
-      <!-- Fim do Cartão 3D -->
+        <figcaption>Árvore de Natal</figcaption>
+      </figure>
+      <figure class="obra" style="--rot:1.2deg">
+        <div class="tilt">
+          <div class="face"><img src="painel/obra-02.jpg" alt="Duas bolas de Natal penduradas e um presente roxo, em moldura verde" width="640" height="945" loading="lazy"><span class="glare"></span></div>
+          <span class="pin" aria-hidden="true"></span>
+        </div>
+        <figcaption>Enfeites de Natal</figcaption>
+      </figure>
+      <figure class="obra" style="--rot:-0.8deg">
+        <div class="tilt">
+          <div class="face"><img src="painel/obra-03.jpg" alt="Boneco de neve amarelo sorrindo, com dois corações, em moldura laranja" width="640" height="898" loading="lazy"><span class="glare"></span></div>
+          <span class="pin" aria-hidden="true"></span>
+        </div>
+        <figcaption>Boneco de neve</figcaption>
+      </figure>
+      <figure class="obra" style="--rot:1.8deg">
+        <div class="tilt">
+          <div class="face"><img src="painel/obra-04.jpg" alt="Bolas de Natal azul-petróleo e vermelha penduradas e um presente verde com fita rosa, em moldura vermelha" width="640" height="941" loading="lazy"><span class="glare"></span></div>
+          <span class="pin" aria-hidden="true"></span>
+        </div>
+        <figcaption>Enfeites de Natal</figcaption>
+      </figure>
+      <figure class="obra" style="--rot:-1.2deg">
+        <div class="tilt">
+          <div class="face"><img src="painel/obra-05.jpg" alt="Árvore de Natal com estrela dourada, bolas coloridas e dois corações, em moldura vermelha" width="640" height="928" loading="lazy"><span class="glare"></span></div>
+          <span class="pin" aria-hidden="true"></span>
+        </div>
+        <figcaption>Árvore de Natal</figcaption>
+      </figure>
+      <figure class="obra" style="--rot:0.9deg">
+        <div class="tilt">
+          <div class="face"><img src="painel/obra-06.jpg" alt="Três pacotes de presente empilhados, em moldura laranja" width="640" height="955" loading="lazy"><span class="glare"></span></div>
+          <span class="pin" aria-hidden="true"></span>
+        </div>
+        <figcaption>Presentes</figcaption>
+      </figure>
+      <figure class="obra" style="--rot:-1.8deg">
+        <div class="tilt">
+          <div class="face"><img src="painel/obra-07.jpg" alt="Bolas de Natal rosa e verde penduradas e um presente laranja, em moldura vermelha" width="640" height="953" loading="lazy"><span class="glare"></span></div>
+          <span class="pin" aria-hidden="true"></span>
+        </div>
+        <figcaption>Enfeites de Natal</figcaption>
+      </figure>
+      <figure class="obra" style="--rot:1.1deg">
+        <div class="tilt">
+          <div class="face"><img src="painel/obra-08.jpg" alt="Árvore de Natal com estrela, bolas coloridas e dois corações, em moldura verde" width="636" height="960" loading="lazy"><span class="glare"></span></div>
+          <span class="pin" aria-hidden="true"></span>
+        </div>
+        <figcaption>Árvore de Natal</figcaption>
+      </figure>
+      <figure class="obra" style="--rot:-0.6deg">
+        <div class="tilt">
+          <div class="face"><img src="painel/obra-09.jpg" alt="Boneco de neve azul de colagem com dois corações, em moldura vermelha" width="638" height="960" loading="lazy"><span class="glare"></span></div>
+          <span class="pin" aria-hidden="true"></span>
+        </div>
+        <figcaption>Boneco de neve</figcaption>
+      </figure>
+      <figure class="obra" style="--rot:1.5deg">
+        <div class="tilt">
+          <div class="face"><img src="painel/obra-10.jpg" alt="Bolas de Natal penduradas e um presente vermelho com fita azul, em moldura verde" width="638" height="960" loading="lazy"><span class="glare"></span></div>
+          <span class="pin" aria-hidden="true"></span>
+        </div>
+        <figcaption>Enfeites de Natal</figcaption>
+      </figure>
     </div>
+    <p class="breve">Em breve, cada obra terá um QR Code com a história por trás dela.</p>
   </div>
 </section>
 
@@ -175,6 +236,6 @@
   </div>
 </footer>
 
-<script src="js/script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
