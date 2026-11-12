@@ -142,3 +142,69 @@ footer p{margin:0 auto;font-size:.95rem}
 .tile .ph{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem 1rem;border:2px dashed var(--folha);border-radius:22px;background:var(--bege);color:var(--floresta);font-size:.95rem}
 .tile .ph code{font-size:.8rem;word-break:break-all;color:var(--escuro)}
 
+/* Efeito 3D - Cartão de Natal */
+.tilt-card {
+  width: 280px; 
+  aspect-ratio: 2/3;
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  cursor: pointer;
+  /* Configuração essencial para o 3D */
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease-out;
+  transform: perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+.tilt-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Camada que flutua acima da imagem */
+.tilt-content {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 2rem;
+  /* A mágica do Parallax: joga o texto 70px para frente */
+  transform: translateZ(70px); 
+}
+
+.badge-natal {
+  background: rgba(216, 27, 58, 0.95); /* Usa o tom de vermelho do projeto */
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: 1.25rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* Luz que segue o mouse */
+.tilt-spotlight {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 40%);
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}

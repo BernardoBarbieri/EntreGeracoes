@@ -1,13 +1,13 @@
 /* ==========================================================
    GALERIA
-   Coloque suas fotos e vídeos na pasta  galeria/
+   Coloque suas fotos e vídeos na pasta  images/galeria/
    e liste cada arquivo abaixo. Para adicionar um item novo,
    copie uma linha e troque o nome do arquivo e a legenda.
 
    foto('arquivo.jpg', 'Legenda opcional')
    video('arquivo.mp4', 'Legenda opcional', 'capa.jpg')  <- capa é opcional
    ========================================================== */
-const PASTA = 'galeria/';
+const PASTA = 'images/galeria/';
 const foto  = (arquivo, legenda = '') => ({ src: PASTA + arquivo, title: legenda, video: false });
 const video = (arquivo, legenda = '', capa = '') => ({ src: PASTA + arquivo, title: legenda, video: true, poster: capa ? PASTA + capa : '' });
 
@@ -112,3 +112,37 @@ document.getElementById('form').addEventListener('submit', e => {
   ok.focus();
   e.target.reset();
 });
+
+/* ---------- Efeito 3D Painel Digital ---------- */
+const card = document.getElementById('tilt-card-natal');
+if (card) {
+  const spotlight = card.querySelector('.tilt-spotlight');
+  const tiltLimit = 15; // Ângulo máximo de inclinação
+
+  card.addEventListener('pointermove', (e) => {
+    const rect = card.getBoundingClientRect();
+    // Calcula a posição do mouse em porcentagem (0 a 1)
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+
+    // Calcula a rotação nos eixos X e Y
+    const xRot = (py - 0.5) * (tiltLimit * 2) * 1; 
+    const yRot = (px - 0.5) * -(tiltLimit * 2) * 1; 
+
+    // Aplica a rotação e aumenta levemente o cartão (scale3d)
+    card.style.transform = `perspective(1200px) rotateX(${xRot}deg) rotateY(${yRot}deg) scale3d(1.05, 1.05, 1.05)`;
+
+    // Move a luz (spotlight)
+    if (spotlight) {
+      spotlight.style.opacity = '1';
+      spotlight.style.left = `${px * 100}%`;
+      spotlight.style.top = `${py * 100}%`;
+    }
+  });
+
+  // Reseta o cartão quando o mouse sai de cima
+  card.addEventListener('pointerleave', () => {
+    card.style.transform = `perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    if (spotlight) spotlight.style.opacity = '0';
+  });
+}
