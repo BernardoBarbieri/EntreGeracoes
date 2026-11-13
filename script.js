@@ -7,20 +7,21 @@ const foto  = (arquivo, legenda = '') => ({ src: PASTA + arquivo, title: legenda
 const video = (arquivo, legenda = '', capa = '') => ({ src: PASTA + arquivo, title: legenda, video: true, poster: capa ? PASTA + capa : '' });
 
 const MEDIA = [
-  foto('foto-01.jpg', ''),
-  foto('foto-02.jpg', ''),
-  foto('foto-03.jpg', ''),
-  foto('foto-04.jpg', ''),
-  foto('foto-05.jpg', ''),
-  foto('foto-06.jpg', ''),
-  foto('foto-07.jpg', ''),
-  foto('foto-08.jpg', ''),
-  foto('foto-09.jpg', ''),
-  foto('foto-10.jpg', ''),
-  foto('foto-11.jpg', ''),
-  foto('foto-12.jpg', '')
+  foto('IMG_20261026_102616414_HDR.jpg', 'Equipe de voluntários e participantes reunidos'),
+  foto('IMG_20261026_092049422_HDR.jpg', 'Oficina de arte e memória no pátio'),
+  foto('IMG_0117.jpg', 'Kits preparados com carinho para as oficinas'),
+  foto('IMG_0146.jpg', 'Alegria e atenção durante a montagem das artes'),
+  foto('IMG_0150.jpg', 'Mãos construindo a árvore de Natal'),
+  foto('IMG_0167.jpg', 'Foco nos detalhes da colagem'),
+  foto('IMG_0184.jpg', 'Troca de afeto e experiências entre gerações'),
+  foto('IMG_0137.jpg', 'Mesa de criação a todo vapor'),
+  
+  // Se você não converteu os vídeos, mude as extensões de .mp4 de volta para .MOV abaixo
+  video('20261026_095401.mp4', 'Escolhendo os detalhes da obra'),
+  video('20261026_095026.mp4', 'O orgulho de assinar a própria arte'),
+  video('IMG_8441.mov', 'Todos engajados e focados na atividade'),
+  video('IMG_8444.mov', 'O cuidado e a delicadeza no acabamento')
 ];
-
 /* ----------------------------------------------------
    INJETAR SLIDES E INICIAR O SWIPER COVERFLOW
 ------------------------------------------------------- */
