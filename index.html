@@ -26,7 +26,7 @@
   <div class="wrap nav">
     <a class="brand" href="#inicio" aria-label="Entre Gerações — início">
       <span class="logo"><img src="logo.jpg" alt="" width="46" height="46"></span>Entre Gerações
-    </a>S
+    </a>
     <button class="toggle" aria-expanded="false" aria-controls="menu">Menu</button>
     <ul class="menu" id="menu">
       <li><a href="#sobre">O projeto</a></li>
@@ -237,5 +237,60 @@
 </footer>
 
 <script src="script.js"></script>
+
+<!-- CÓDIGO TILT CARD - SPELL.SH (Adaptado) -->
+<style>
+  /* Define a profundidade da câmera */
+  .obra {
+    perspective: 1200px; 
+    cursor: pointer;
+  }
+  /* Ativa o espaço 3D no cartão */
+  .obra .tilt {
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out;
+    will-change: transform;
+  }
+  /* Faz a foto e a moldura saltarem 20px */
+  .obra .face {
+    transform: translateZ(20px);
+    transform-style: preserve-3d; 
+  }
+  /* Faz o alfinete saltar 50px (mais perto da tela) */
+  .obra .pin {
+    transform: translateZ(50px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.4);
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.obra').forEach(obra => {
+    const tilt = obra.querySelector('.tilt');
+    const limit = 15; // Ângulo máximo da inclinação (15 graus)
+
+    obra.addEventListener('pointermove', (e) => {
+      if (!tilt) return;
+      
+      const rect = obra.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width;
+      const py = (e.clientY - rect.top) / rect.height;
+
+      // Efeito Gravitate (dir = 1). Para afastar (Evade), troque o 1 por -1
+      const xRot = (py - 0.5) * (limit * 2) * 1;
+      const yRot = (px - 0.5) * -(limit * 2) * 1;
+
+      // Aplica a rotação e aumenta levemente o cartão
+      tilt.style.transform = `rotateX(${xRot}deg) rotateY(${yRot}deg) scale3d(1.05, 1.05, 1.05)`;
+    });
+
+    obra.addEventListener('pointerleave', () => {
+      if (!tilt) return;
+      // Zera a posição quando o mouse sai
+      tilt.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    });
+  });
+</script>
+<!-- FIM CÓDIGO TILT CARD -->
+
 </body>
 </html>
