@@ -16,12 +16,13 @@ const MEDIA = [
   foto('IMG_0184.jpg', 'Troca de afeto e experiências entre gerações'),
   foto('IMG_0137.jpg', 'Mesa de criação a todo vapor'),
   
-  // Se você não converteu os vídeos, mude as extensões de .mp4 de volta para .MOV abaixo
+  // Se manteve os ficheiros originais do iPhone sem converter, mude '.mp4' para '.MOV' abaixo
   video('20261026_095401.mp4', 'Escolhendo os detalhes da obra'),
   video('20261026_095026.mp4', 'O orgulho de assinar a própria arte'),
-  video('IMG_8441.mov', 'Todos engajados e focados na atividade'),
-  video('IMG_8444.mov', 'O cuidado e a delicadeza no acabamento')
+  video('IMG_8441.mp4', 'Todos engajados e focados na atividade'),
+  video('IMG_8444.mp4', 'O cuidado e a delicadeza no acabamento')
 ];
+
 /* ----------------------------------------------------
    INJETAR SLIDES E INICIAR O SWIPER COVERFLOW
 ------------------------------------------------------- */
