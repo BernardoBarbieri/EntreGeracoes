@@ -114,24 +114,32 @@ document.getElementById('form').addEventListener('submit', e => {
 });
 
 
-/* ---------- Painel Digital: efeito 3D (inclina a obra seguindo o mouse/dedo) ----------
-   Ajuste INCLINACAO (graus) e ESCALA para deixar o efeito mais forte ou mais leve. */
-(function () {
-  const INCLINACAO = 10, ESCALA = 1.05;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.querySelectorAll('.obra').forEach(obra => {
-    const tilt = obra.querySelector('.tilt');
-    const sair = () => { obra.classList.remove('mexendo'); tilt.style.transform = ''; };
-    obra.addEventListener('pointermove', e => {
-      const r = obra.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-      obra.classList.add('mexendo');
-      tilt.style.transform = 'rotateX(' + ((0.5 - y) * 2 * INCLINACAO).toFixed(2) + 'deg) rotateY(' + ((x - 0.5) * 2 * INCLINACAO).toFixed(2) + 'deg) scale(' + ESCALA + ')';
-      obra.style.setProperty('--gx', (x * 100).toFixed(1) + '%');
-      obra.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
-    });
-    obra.addEventListener('pointerleave', sair);
-    obra.addEventListener('pointercancel', sair);
-    obra.addEventListener('pointerup', e => { if (e.pointerType === 'touch') sair(); });
+/* ---------- Efeito 3D Múltiplos Cartões ---------- */
+const obras = document.querySelectorAll('.obra');
+const tiltLimit = 15; // Ângulo máximo de inclinação
+
+obras.forEach(obra => {
+  const tiltElement = obra.querySelector('.tilt');
+
+  obra.addEventListener('pointermove', (e) => {
+    if (!tiltElement) return;
+    const rect = obra.getBoundingClientRect();
+    
+    // Posição do cursor em porcentagem dentro do cartão atual
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+
+    // Matemática da rotação 3D
+    const xRot = (py - 0.5) * (tiltLimit * 2) * -1; 
+    const yRot = (px - 0.5) * -(tiltLimit * 2) * 1; 
+
+    // Aplica o efeito no .tilt do cartão específico
+    tiltElement.style.transform = `rotateX(${xRot}deg) rotateY(${yRot}deg) scale3d(1.05, 1.05, 1.05)`;
   });
-})();
+
+  // Reseta o cartão suavemente quando o mouse sai
+  obra.addEventListener('pointerleave', () => {
+    if (!tiltElement) return;
+    tiltElement.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+  });
+});

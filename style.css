@@ -167,3 +167,27 @@ footer p{margin:0 auto;font-size:.95rem}
 .breve{margin:2.5rem auto 0;font-size:1rem;opacity:.9}
 @media(max-width:640px){.obras{gap:2rem 1.1rem}.obra{width:calc(50% - .6rem)}.obra figcaption{font-size:1rem}.galho{width:100px;height:64px}}
 @media(prefers-reduced-motion:reduce){.painel::before,.star{animation:none!important}}
+
+
+/* Efeito 3D para múltiplos cartões (Painel Digital) */
+.obra {
+  perspective: 1200px;
+}
+
+.tilt {
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+
+/* Faz a imagem saltar um pouco para frente */
+.obra .face {
+  transform: translateZ(20px);
+}
+
+/* Faz o alfinete saltar ainda mais, criando profundidade */
+.obra .pin {
+  transform: translateZ(50px);
+  /* Adiciona uma sombra dinâmica no alfinete para destacar o 3D */
+  box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+}
