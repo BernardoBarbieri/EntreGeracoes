@@ -8,7 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -25,7 +27,7 @@
 <header>
   <div class="wrap nav">
     <a class="brand" href="#inicio" aria-label="Entre Gerações — início">
-      <span class="logo"><img src="logo.jpg" alt="" width="46" height="46"></span>Entre Gerações
+      <span class="logo"><img src="images/logo.jpg" alt="" width="46" height="46"></span>Entre Gerações
     </a>
     <button class="toggle" aria-expanded="false" aria-controls="menu">Menu</button>
     <ul class="menu" id="menu">
@@ -52,7 +54,7 @@
         <a class="btn btn-outline" href="#sobre">Conhecer o projeto</a>
       </div>
     </div>
-    <div class="logo"><img src="logo.jpg" alt="Logo do Entre Gerações: árvore da vida com raízes, folhas e conexões douradas, cercada por azevinho e um laço vermelho" width="420" height="420"></div>
+    <div class="logo"><img src="images/logo.jpg" alt="Logo do Entre Gerações" width="420" height="420"></div>
   </div>
 </section>
 
@@ -85,100 +87,46 @@
     <div class="gal-head">
       <div>
         <h2>Galeria de imagens e vídeos</h2>
-        <p>Momentos das oficinas. Os itens carregam aos poucos para a página ficar leve.</p>
+        <p>Momentos das oficinas. Arraste para os lados para ver mais.</p>
       </div>
       <a class="btn btn-outline" href="https://drive.google.com/drive/folders/1GmpkdHltm5TP1AHsVoAQbLFt2xohMpAQ" target="_blank" rel="noopener">Abrir pasta completa</a>
     </div>
-    <div class="masonry" id="grid" aria-live="polite"></div>
-    <div class="more">
-      <button class="btn btn-primary" id="more" type="button">Carregar mais</button>
-      <small id="count"></small>
+    
+    <!-- Novo Carrossel Swiper 3D -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper" id="swiper-wrapper-galeria">
+        <!-- As imagens do JS vão entrar aqui -->
+      </div>
+      <div class="swiper-pagination"></div>
     </div>
+    
   </div>
 </section>
 
 <section class="painel" id="painel">
-  <div class="lights" aria-hidden="true"></div>
-  <span class="star s1" aria-hidden="true">✦</span><span class="star s2" aria-hidden="true">✦</span><span class="star s3" aria-hidden="true">✦</span><span class="star s4" aria-hidden="true">✦</span><span class="star s5" aria-hidden="true">✦</span>
-  <svg class="galho l" aria-hidden="true"><use href="#ramo"/></svg>
-  <svg class="galho r" aria-hidden="true"><use href="#ramo"/></svg>
   <div class="wrap">
-    <span class="selo">Obras de Natal</span>
     <h2>Painel Digital</h2>
     <p>As criações feitas pelos participantes nas oficinas. Passe o mouse sobre cada obra, ou toque e arraste no celular, para vê-la ganhar profundidade.</p>
-    <div class="obras">
-      <figure class="obra" style="--rot:-1.6deg">
+    <div class="frames" aria-hidden="true">
+      <figure class="obra">
         <div class="tilt">
-          <div class="face"><img src="painel/obra-01.jpg" alt="Árvore de Natal com estrela dourada, bolas coloridas e dois corações, em moldura vermelha" width="640" height="948" loading="lazy"><span class="glare"></span></div>
-          <span class="pin" aria-hidden="true"></span>
+          <div class="face"><img src="./images/painel/obra-02.jpg" alt="Obra"></div>
+          <span class="pin"></span>
         </div>
-        <figcaption>Árvore de Natal</figcaption>
       </figure>
-      <figure class="obra" style="--rot:1.2deg">
+      <figure class="obra">
         <div class="tilt">
-          <div class="face"><img src="painel/obra-02.jpg" alt="Duas bolas de Natal penduradas e um presente roxo, em moldura verde" width="640" height="945" loading="lazy"><span class="glare"></span></div>
-          <span class="pin" aria-hidden="true"></span>
+          <div class="face"><img src="./images/painel/obra-03.jpg" alt="Obra"></div>
+          <span class="pin"></span>
         </div>
-        <figcaption>Enfeites de Natal</figcaption>
       </figure>
-      <figure class="obra" style="--rot:-0.8deg">
+      <figure class="obra">
         <div class="tilt">
-          <div class="face"><img src="painel/obra-03.jpg" alt="Boneco de neve amarelo sorrindo, com dois corações, em moldura laranja" width="640" height="898" loading="lazy"><span class="glare"></span></div>
-          <span class="pin" aria-hidden="true"></span>
+          <div class="face"><img src="./images/painel/obra-04.jpg" alt="Obra"></div>
+          <span class="pin"></span>
         </div>
-        <figcaption>Boneco de neve</figcaption>
-      </figure>
-      <figure class="obra" style="--rot:1.8deg">
-        <div class="tilt">
-          <div class="face"><img src="painel/obra-04.jpg" alt="Bolas de Natal azul-petróleo e vermelha penduradas e um presente verde com fita rosa, em moldura vermelha" width="640" height="941" loading="lazy"><span class="glare"></span></div>
-          <span class="pin" aria-hidden="true"></span>
-        </div>
-        <figcaption>Enfeites de Natal</figcaption>
-      </figure>
-      <figure class="obra" style="--rot:-1.2deg">
-        <div class="tilt">
-          <div class="face"><img src="painel/obra-05.jpg" alt="Árvore de Natal com estrela dourada, bolas coloridas e dois corações, em moldura vermelha" width="640" height="928" loading="lazy"><span class="glare"></span></div>
-          <span class="pin" aria-hidden="true"></span>
-        </div>
-        <figcaption>Árvore de Natal</figcaption>
-      </figure>
-      <figure class="obra" style="--rot:0.9deg">
-        <div class="tilt">
-          <div class="face"><img src="painel/obra-06.jpg" alt="Três pacotes de presente empilhados, em moldura laranja" width="640" height="955" loading="lazy"><span class="glare"></span></div>
-          <span class="pin" aria-hidden="true"></span>
-        </div>
-        <figcaption>Presentes</figcaption>
-      </figure>
-      <figure class="obra" style="--rot:-1.8deg">
-        <div class="tilt">
-          <div class="face"><img src="painel/obra-07.jpg" alt="Bolas de Natal rosa e verde penduradas e um presente laranja, em moldura vermelha" width="640" height="953" loading="lazy"><span class="glare"></span></div>
-          <span class="pin" aria-hidden="true"></span>
-        </div>
-        <figcaption>Enfeites de Natal</figcaption>
-      </figure>
-      <figure class="obra" style="--rot:1.1deg">
-        <div class="tilt">
-          <div class="face"><img src="painel/obra-08.jpg" alt="Árvore de Natal com estrela, bolas coloridas e dois corações, em moldura verde" width="636" height="960" loading="lazy"><span class="glare"></span></div>
-          <span class="pin" aria-hidden="true"></span>
-        </div>
-        <figcaption>Árvore de Natal</figcaption>
-      </figure>
-      <figure class="obra" style="--rot:-0.6deg">
-        <div class="tilt">
-          <div class="face"><img src="painel/obra-09.jpg" alt="Boneco de neve azul de colagem com dois corações, em moldura vermelha" width="638" height="960" loading="lazy"><span class="glare"></span></div>
-          <span class="pin" aria-hidden="true"></span>
-        </div>
-        <figcaption>Boneco de neve</figcaption>
-      </figure>
-      <figure class="obra" style="--rot:1.5deg">
-        <div class="tilt">
-          <div class="face"><img src="painel/obra-10.jpg" alt="Bolas de Natal penduradas e um presente vermelho com fita azul, em moldura verde" width="638" height="960" loading="lazy"><span class="glare"></span></div>
-          <span class="pin" aria-hidden="true"></span>
-        </div>
-        <figcaption>Enfeites de Natal</figcaption>
       </figure>
     </div>
-    <p class="breve">Em breve, cada obra terá um QR Code com a história por trás dela.</p>
   </div>
 </section>
 
@@ -200,7 +148,7 @@
   <div class="wrap">
     <div>
       <h2>Sua opinião importa</h2>
-      <p>Participou de uma oficina ou visitou o projeto? Conte como foi. Leva menos de um minuto e nos ajuda a cuidar melhor de cada encontro.</p>
+      <p>Participou de uma oficina ou visitou o projeto? Conte como foi.</p>
     </div>
     <form id="form" novalidate>
       <div class="field">
@@ -210,17 +158,16 @@
       <fieldset>
         <legend>Como você avalia a experiência?</legend>
         <div class="stars" role="radiogroup">
-          <input type="radio" name="nota" id="s5" value="5"><label for="s5" title="5 estrelas" aria-label="5 estrelas">★</label>
-          <input type="radio" name="nota" id="s4" value="4"><label for="s4" title="4 estrelas" aria-label="4 estrelas">★</label>
-          <input type="radio" name="nota" id="s3" value="3"><label for="s3" title="3 estrelas" aria-label="3 estrelas">★</label>
-          <input type="radio" name="nota" id="s2" value="2"><label for="s2" title="2 estrelas" aria-label="2 estrelas">★</label>
-          <input type="radio" name="nota" id="s1" value="1"><label for="s1" title="1 estrela" aria-label="1 estrela">★</label>
+          <input type="radio" name="nota" id="s5" value="5"><label for="s5">★</label>
+          <input type="radio" name="nota" id="s4" value="4"><label for="s4">★</label>
+          <input type="radio" name="nota" id="s3" value="3"><label for="s3">★</label>
+          <input type="radio" name="nota" id="s2" value="2"><label for="s2">★</label>
+          <input type="radio" name="nota" id="s1" value="1"><label for="s1">★</label>
         </div>
       </fieldset>
       <div class="field">
         <label for="msg">Comentários</label>
         <textarea id="msg" name="msg" rows="5"></textarea>
-        <p class="hint">Conte o que mais gostou e o que podemos melhorar.</p>
       </div>
       <button class="btn btn-gold" type="submit">Enviar minha opinião</button>
       <div class="ok" id="ok" role="status" tabindex="-1">Obrigado por compartilhar sua opinião!</div>
@@ -236,61 +183,8 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
-
-<!-- CÓDIGO TILT CARD - SPELL.SH (Adaptado) -->
-<style>
-  /* Define a profundidade da câmera */
-  .obra {
-    perspective: 1200px; 
-    cursor: pointer;
-  }
-  /* Ativa o espaço 3D no cartão */
-  .obra .tilt {
-    transform-style: preserve-3d;
-    transition: transform 0.15s ease-out;
-    will-change: transform;
-  }
-  /* Faz a foto e a moldura saltarem 20px */
-  .obra .face {
-    transform: translateZ(20px);
-    transform-style: preserve-3d; 
-  }
-  /* Faz o alfinete saltar 50px (mais perto da tela) */
-  .obra .pin {
-    transform: translateZ(50px);
-    box-shadow: 0 15px 25px rgba(0,0,0,0.4);
-  }
-</style>
-
-<script>
-  document.querySelectorAll('.obra').forEach(obra => {
-    const tilt = obra.querySelector('.tilt');
-    const limit = 15; // Ângulo máximo da inclinação (15 graus)
-
-    obra.addEventListener('pointermove', (e) => {
-      if (!tilt) return;
-      
-      const rect = obra.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width;
-      const py = (e.clientY - rect.top) / rect.height;
-
-      // Efeito Gravitate (dir = 1). Para afastar (Evade), troque o 1 por -1
-      const xRot = (py - 0.5) * (limit * 2) * 1;
-      const yRot = (px - 0.5) * -(limit * 2) * 1;
-
-      // Aplica a rotação e aumenta levemente o cartão
-      tilt.style.transform = `rotateX(${xRot}deg) rotateY(${yRot}deg) scale3d(1.05, 1.05, 1.05)`;
-    });
-
-    obra.addEventListener('pointerleave', () => {
-      if (!tilt) return;
-      // Zera a posição quando o mouse sai
-      tilt.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-    });
-  });
-</script>
-<!-- FIM CÓDIGO TILT CARD -->
-
+<!-- Importa o script do Swiper e depois o script do site -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

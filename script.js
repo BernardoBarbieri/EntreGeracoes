@@ -1,13 +1,8 @@
 /* ==========================================================
-   GALERIA
-   Coloque suas fotos e vídeos na pasta  galeria/
-   e liste cada arquivo abaixo. Para adicionar um item novo,
-   copie uma linha e troque o nome do arquivo e a legenda.
-
-   foto('arquivo.jpg', 'Legenda opcional')
-   video('arquivo.mp4', 'Legenda opcional', 'capa.jpg')  <- capa é opcional
+   CONFIGURAÇÃO DA GALERIA
+   As imagens serão injetadas dinamicamente no Swiper
    ========================================================== */
-const PASTA = 'galeria/';
+const PASTA = 'images/galeria/';
 const foto  = (arquivo, legenda = '') => ({ src: PASTA + arquivo, title: legenda, video: false });
 const video = (arquivo, legenda = '', capa = '') => ({ src: PASTA + arquivo, title: legenda, video: true, poster: capa ? PASTA + capa : '' });
 
@@ -16,7 +11,6 @@ const MEDIA = [
   foto('foto-02.jpg', ''),
   foto('foto-03.jpg', ''),
   foto('foto-04.jpg', ''),
-  video('video-01.mp4', ''),
   foto('foto-05.jpg', ''),
   foto('foto-06.jpg', ''),
   foto('foto-07.jpg', ''),
@@ -24,71 +18,53 @@ const MEDIA = [
   foto('foto-09.jpg', ''),
   foto('foto-10.jpg', ''),
   foto('foto-11.jpg', ''),
-  foto('foto-12.jpg', ''),
-  foto('foto-13.jpg', ''),
-  foto('foto-14.jpg', ''),
-  foto('foto-15.jpg', ''),
-  foto('foto-16.jpg', ''),
-  foto('foto-17.jpg', '')
+  foto('foto-12.jpg', '')
 ];
 
-const POR_PAGINA = 9;   // quantos itens aparecem a cada clique em "Carregar mais"
-const ALTURAS = [220, 300, 260, 340, 240, 320]; // alturas dos espaços vazios (só visual)
-const grid = document.getElementById('grid');
-const btn = document.getElementById('more');
-const count = document.getElementById('count');
-let shown = 0;
+/* ----------------------------------------------------
+   INJETAR SLIDES E INICIAR O SWIPER COVERFLOW
+------------------------------------------------------- */
+const swiperWrapper = document.getElementById('swiper-wrapper-galeria');
 
-/* Espaço vazio mostrado enquanto o arquivo ainda não existe na pasta */
-function espacoVazio(m, i) {
-  const d = document.createElement('div');
-  d.className = 'ph';
-  d.style.minHeight = ALTURAS[i % ALTURAS.length] + 'px';
-  d.innerHTML = '<svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true"><rect x="6" y="10" width="52" height="44" rx="6" fill="none" stroke="#1B5E44" stroke-width="4"/><circle cx="22" cy="26" r="5" fill="#D4AF37"/><path d="M10 50l16-16 10 10 8-8 12 14z" fill="#7A9B7E"/></svg>'
-    + '<strong>Coloque ' + (m.video ? 'o vídeo' : 'a foto') + ' aqui</strong><code></code>';
-  d.querySelector('code').textContent = m.src;
-  return d;
+if (swiperWrapper) {
+  MEDIA.forEach(m => {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+    
+    if (m.video) {
+      slide.innerHTML = `<video src="${m.src}" controls playsinline ${m.poster ? `poster="${m.poster}"` : ''}></video>`;
+    } else {
+      slide.innerHTML = `<img src="${m.src}" alt="${m.title || 'Galeria Entre Gerações'}" loading="lazy">`;
+    }
+    swiperWrapper.appendChild(slide);
+  });
 }
 
-function criarItem(m, i) {
-  const f = document.createElement('figure');
-  f.className = 'tile';
-  let midia;
-
-  if (m.video) {
-    midia = document.createElement('video');
-    midia.src = m.src;
-    midia.controls = true;
-    midia.preload = 'none';           // só baixa quando a pessoa der play
-    midia.playsInline = true;
-    if (m.poster) midia.poster = m.poster;
-    midia.setAttribute('aria-label', m.title || 'Vídeo das oficinas');
-  } else {
-    midia = new Image();
-    midia.src = m.src;
-    midia.alt = m.title || 'Foto das oficinas do Entre Gerações';
-    midia.loading = 'lazy';           // lazy loading nativo do navegador
-    midia.decoding = 'async';
-  }
-  midia.addEventListener('error', () => midia.replaceWith(espacoVazio(m, i)));
-  f.appendChild(midia);
-
-  if (m.title) {
-    const cap = document.createElement('figcaption');
-    cap.textContent = m.title;
-    f.appendChild(cap);
-  }
-  return f;
+// Inicializa o Swiper 3D usando a biblioteca que importamos no HTML
+if (typeof Swiper !== 'undefined') {
+  new Swiper(".mySwiper", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    loop: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
+    coverflowEffect: {
+      rotate: 40,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
 }
-
-function carregar() {
-  MEDIA.slice(shown, shown + POR_PAGINA).forEach((m, k) => grid.appendChild(criarItem(m, shown + k)));
-  shown = Math.min(shown + POR_PAGINA, MEDIA.length);
-  count.textContent = 'Mostrando ' + shown + ' de ' + MEDIA.length;
-  if (shown >= MEDIA.length) btn.hidden = true;
-}
-btn.addEventListener('click', carregar);
-carregar();
 
 /* ---------- Menu no celular ---------- */
 const tg = document.querySelector('.toggle');
@@ -101,10 +77,7 @@ mn.addEventListener('click', e => {
   if (e.target.tagName === 'A') { mn.classList.remove('open'); tg.setAttribute('aria-expanded', false); }
 });
 
-/* ---------- Formulário ----------
-   Por enquanto só mostra a mensagem de agradecimento.
-   Para receber as respostas, conecte a um serviço (Formspree, Google Forms...)
-   ou a um backend, dentro deste listener. */
+/* ---------- Formulário ---------- */
 document.getElementById('form').addEventListener('submit', e => {
   e.preventDefault();
   const ok = document.getElementById('ok');
@@ -113,33 +86,27 @@ document.getElementById('form').addEventListener('submit', e => {
   e.target.reset();
 });
 
-
-/* ---------- Efeito 3D Múltiplos Cartões ---------- */
-const obras = document.querySelectorAll('.obra');
-const tiltLimit = 15; // Ângulo máximo de inclinação
-
-obras.forEach(obra => {
-  const tiltElement = obra.querySelector('.tilt');
+/* ---------- EFEITO 3D DO PAINEL DIGITAL (Tilt) ---------- */
+document.querySelectorAll('.obra').forEach(obra => {
+  const tilt = obra.querySelector('.tilt');
+  const limit = 15; // Ângulo máximo da inclinação (15 graus)
 
   obra.addEventListener('pointermove', (e) => {
-    if (!tiltElement) return;
-    const rect = obra.getBoundingClientRect();
+    if (!tilt) return;
     
-    // Posição do cursor em porcentagem dentro do cartão atual
+    const rect = obra.getBoundingClientRect();
     const px = (e.clientX - rect.left) / rect.width;
     const py = (e.clientY - rect.top) / rect.height;
 
-    // Matemática da rotação 3D
-    const xRot = (py - 0.5) * (tiltLimit * 2) * -1; 
-    const yRot = (px - 0.5) * -(tiltLimit * 2) * 1; 
+    // Efeito Gravitate (dir = 1)
+    const xRot = (py - 0.5) * (limit * 2) * 1;
+    const yRot = (px - 0.5) * -(limit * 2) * 1;
 
-    // Aplica o efeito no .tilt do cartão específico
-    tiltElement.style.transform = `rotateX(${xRot}deg) rotateY(${yRot}deg) scale3d(1.05, 1.05, 1.05)`;
+    tilt.style.transform = `rotateX(${xRot}deg) rotateY(${yRot}deg) scale3d(1.05, 1.05, 1.05)`;
   });
 
-  // Reseta o cartão suavemente quando o mouse sai
   obra.addEventListener('pointerleave', () => {
-    if (!tiltElement) return;
-    tiltElement.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    if (!tilt) return;
+    tilt.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
   });
 });
