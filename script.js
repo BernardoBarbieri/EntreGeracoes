@@ -2,7 +2,7 @@
    CONFIGURAÇÃO DA GALERIA
    As imagens serão injetadas dinamicamente no Swiper
    ========================================================== */
-const PASTA = 'images/galeria/';
+const PASTA = 'images';
 const foto  = (arquivo, legenda = '') => ({ src: PASTA + arquivo, title: legenda, video: false });
 const video = (arquivo, legenda = '', capa = '') => ({ src: PASTA + arquivo, title: legenda, video: true, poster: capa ? PASTA + capa : '' });
 
