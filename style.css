@@ -200,3 +200,23 @@ footer{background:var(--floresta);color:var(--offwhite);padding:2.5rem 0;text-al
 footer .slogan{font:italic 500 1.5rem var(--serif);color:var(--dourado);margin:0 auto .5rem}
 footer p{margin:0 auto;font-size:.95rem}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Customizando as setas do Swiper na Galeria */
+.swiper-button-next, .swiper-button-prev {
+  color: var(--floresta) !important;
+  background: rgba(250, 249, 246, 0.85);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all 0.2s ease;
+}
+.swiper-button-next::after, .swiper-button-prev::after {
+  font-size: 1.25rem !important;
+  font-weight: 700;
+}
+.swiper-button-next:hover, .swiper-button-prev:hover {
+  background: var(--dourado);
+  color: #fff !important;
+  transform: scale(1.1);
+}
