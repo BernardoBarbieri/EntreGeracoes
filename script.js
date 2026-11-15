@@ -43,14 +43,14 @@ if (swiperWrapper) {
 
 // Inicializa o Swiper 3D usando a biblioteca que importamos no HTML
 if (typeof Swiper !== 'undefined') {
-  new Swiper(".mySwiper", {
+  const swiperGaleria = new Swiper(".mySwiper", {
     effect: "coverflow",
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: "auto",
     loop: true,
-    observer: true,         // Força atualização
-    observeParents: true,   // Força atualização
+    observer: true,
+    observeParents: true,
     autoplay: {
       delay: 2000,
       disableOnInteraction: false,
@@ -71,6 +71,24 @@ if (typeof Swiper !== 'undefined') {
       prevEl: ".swiper-button-prev",
     },
   });
+
+  // CORREÇÃO INFALÍVEL: Forçar o clique das setas diretamente na API do Swiper
+  const btnNext = document.querySelector('.swiper-button-next');
+  const btnPrev = document.querySelector('.swiper-button-prev');
+  
+  if (btnNext) {
+    btnNext.addEventListener('click', (e) => {
+      e.preventDefault();
+      swiperGaleria.slideNext(); // Força a avançar
+    });
+  }
+  
+  if (btnPrev) {
+    btnPrev.addEventListener('click', (e) => {
+      e.preventDefault();
+      swiperGaleria.slidePrev(); // Força a voltar
+    });
+  }
 }
 
 /* ---------- Menu no celular ---------- */
