@@ -2,11 +2,13 @@
    CONFIGURAÇÃO DA GALERIA
    As imagens serão injetadas dinamicamente no Swiper
    ========================================================== */
-const PASTA = '';
+// Como as fotos estão na raiz do GitHub, a pasta fica vazia
+const PASTA = ''; 
 const foto  = (arquivo, legenda = '') => ({ src: PASTA + arquivo, title: legenda, video: false });
 const video = (arquivo, legenda = '', capa = '') => ({ src: PASTA + arquivo, title: legenda, video: true, poster: capa ? PASTA + capa : '' });
 
 const MEDIA = [
+  // Nomes exatos como estão no seu GitHub
   foto('IMG_20261026_102616414_HDR.jpg', 'Equipe de voluntários e participantes reunidos'),
   foto('IMG_20261026_092049422_HDR.jpg', 'Oficina de arte e memória no pátio'),
   foto('IMG_0117.JPG', 'Kits preparados com carinho para as oficinas'),
@@ -16,9 +18,8 @@ const MEDIA = [
   foto('IMG_0184.JPG', 'Troca de afeto e experiências entre gerações'),
   foto('IMG_0137.JPG', 'Mesa de criação a todo vapor'),
   
-
-  video('IMG_8441.MOV', 'Todos engajados e focados na atividade'),
-
+  // Se converteu o vídeo, altere aqui de .MOV para .mp4
+  video('IMG_8441.MOV', 'Todos engajados e focados na atividade')
 ];
 
 /* ----------------------------------------------------
@@ -63,12 +64,14 @@ if (typeof Swiper !== 'undefined') {
       el: ".swiper-pagination",
       clickable: true,
     },
+    // Setas de navegação ativadas
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
   });
 }
+
 /* ---------- Menu no celular ---------- */
 const tg = document.querySelector('.toggle');
 const mn = document.getElementById('menu');
@@ -80,13 +83,38 @@ mn.addEventListener('click', e => {
   if (e.target.tagName === 'A') { mn.classList.remove('open'); tg.setAttribute('aria-expanded', false); }
 });
 
-/* ---------- Formulário ---------- */
+/* ---------- Formulário com Envio Automático para E-mail ---------- */
 document.getElementById('form').addEventListener('submit', e => {
-  e.preventDefault();
+  e.preventDefault(); // Impede a página de recarregar
+
+  const form = e.target;
+  const formData = new FormData(form);
   const ok = document.getElementById('ok');
-  ok.classList.add('show');
-  ok.focus();
-  e.target.reset();
+  const btn = form.querySelector('button[type="submit"]');
+
+  // Efeito visual no botão enquanto processa o envio
+  btn.textContent = "A enviar...";
+  btn.disabled = true;
+
+  // Envio para o seu e-mail configurado via FormSubmit
+  fetch("https://formsubmit.co/ajax/bernardodimingobarbieri@gmail.com", {
+      method: "POST",
+      body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+      // Quando o envio dá certo, mostra a mensagem e limpa o formulário
+      ok.classList.add('show');
+      ok.focus();
+      form.reset();
+      btn.textContent = "Enviar minha opinião";
+      btn.disabled = false;
+  })
+  .catch(error => {
+      console.error(error);
+      btn.textContent = "Erro ao enviar. Tente de novo.";
+      btn.disabled = false;
+  });
 });
 
 /* ---------- EFEITO 3D DO PAINEL DIGITAL (Tilt) ---------- */
