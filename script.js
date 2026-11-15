@@ -49,6 +49,8 @@ if (typeof Swiper !== 'undefined') {
     centeredSlides: true,
     slidesPerView: "auto",
     loop: true,
+    observer: true,         // Força atualização
+    observeParents: true,   // Força atualização
     autoplay: {
       delay: 2000,
       disableOnInteraction: false,
@@ -64,7 +66,6 @@ if (typeof Swiper !== 'undefined') {
       el: ".swiper-pagination",
       clickable: true,
     },
-    // Setas de navegação ativadas
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
