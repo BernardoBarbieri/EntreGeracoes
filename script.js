@@ -16,11 +16,9 @@ const MEDIA = [
   foto('IMG_0184.JPG', 'Troca de afeto e experiências entre gerações'),
   foto('IMG_0137.JPG', 'Mesa de criação a todo vapor'),
   
-  // Se manteve os ficheiros originais do iPhone sem converter, mude '.mp4' para '.MOV' abaixo
-  video('20261026_095401.mp4', 'Escolhendo os detalhes da obra'),
-  video('20261026_095026.mp4', 'O orgulho de assinar a própria arte'),
+
   video('IMG_8441.MOV', 'Todos engajados e focados na atividade'),
-  video('IMG_8444.mp4', 'O cuidado e a delicadeza no acabamento')
+
 ];
 
 /* ----------------------------------------------------
